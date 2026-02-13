@@ -22,11 +22,7 @@ internal fun Project.configureKotlinAndroid(
     val minSdk = providers.gradleProperty("android.minSdk").map(String::toInt)
     val javaVersionProvider = providers.gradleProperty("kotlin.jvmTarget")
     val baseUrl = providers.gradleProperty("base.url").get()
-
-    val localProperties = Properties().apply {
-        load(FileInputStream(rootProject.file("local.properties")))
-    }
-    val apiKey = localProperties.getProperty("POKE_API_KEY") ?: error("POKE_API_KEY not found in local.properties")
+    val apiVersion = providers.gradleProperty("api.version").get()
 
     commonExtension.apply {
         this.compileSdk = compileSdk.get()
@@ -34,8 +30,8 @@ internal fun Project.configureKotlinAndroid(
             this.minSdk = minSdk.get()
             buildConfigField(
                 "String",
-                "OPEN_WEATHER_API_KEY",
-                "\"$apiKey\""
+                "ApiVersion",
+                "\"$apiVersion\""
             )
             buildConfigField(
                 "String",

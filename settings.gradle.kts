@@ -22,4 +22,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "MiniPokedex"
 include(":app")
- 
+include(":core:network")
+include(":core:common")
