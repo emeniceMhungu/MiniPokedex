@@ -5,6 +5,7 @@ import com.assessment.network.api.model.SpeciesDetailsResponseDto
 import com.assessment.pokedex.domain.model.About
 import com.assessment.pokedex.domain.model.BasicInfoName
 import com.assessment.pokedex.domain.model.BasicInfoValue
+import com.assessment.pokedex.domain.model.ImageUrl
 import com.assessment.pokedex.domain.model.PokemonAbility
 import com.assessment.pokedex.domain.model.PokemonCharacterWithDetails
 import com.assessment.pokedex.domain.model.PokemonColor
@@ -19,7 +20,8 @@ fun PokemonDetailsResponseDto.toDomain(speciesResponse: SpeciesDetailsResponseDt
     return PokemonCharacterWithDetails(
         id = PokemonId(id),
         name = PokemonName(name),
-        about = About(speciesResponse.flavorTextEntries.firstOrNull() {
+        imageUrl = ImageUrl(buildSpriteUrl(id, true)),
+        about = About(speciesResponse.flavorTextEntries.firstOrNull {
             it.language.name.contentEquals(Locale.ENGLISH.language, true)
         }?.flavorText
             ?.replace("\n", " ").orEmpty()),

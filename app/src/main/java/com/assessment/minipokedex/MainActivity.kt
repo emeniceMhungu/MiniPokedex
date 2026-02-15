@@ -5,14 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -21,9 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.assessment.designsystem.component.MiniPokedexAppBackground
 import com.assessment.designsystem.theme.MiniPokedexTheme
-import com.assessment.pokedex.ui.screen.PokemonListScreen
-import com.assessment.pokedex.ui.viewmodel.RetrievePokemonViewModel
+import com.assessment.pokedex.ui.model.PokemonDetailsEvent
+import com.assessment.pokedex.ui.screen.PokemonCharacterDetailsScreen
+import com.assessment.pokedex.ui.viewmodel.GetPokemonDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,16 +61,27 @@ fun MiniPokedexApp() {
             }
         }
     ) {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            val vieModel = hiltViewModel<RetrievePokemonViewModel>()
+        MiniPokedexTheme {
+            MiniPokedexAppBackground {
+                val detailsViewModel = hiltViewModel<GetPokemonDetailsViewModel>()
+                val detailsUiState = detailsViewModel.uiState.collectAsStateWithLifecycle()
 
-            val state = vieModel.uiState.collectAsStateWithLifecycle()
-            PokemonListScreen(
-                modifier = Modifier.padding(innerPadding),
-                uiState = state.value,
-                onEvent = vieModel::onEvent
-            )
+                LaunchedEffect(Unit) {
+                    detailsViewModel.onEvent(
+                        PokemonDetailsEvent.LoadPokemonDetails(
+                            25
+                        )
+                    )
+                }
+
+                PokemonCharacterDetailsScreen(
+                    modifier = Modifier.fillMaxSize(),
+                    uiState = detailsUiState.value,
+                    onNavigateUp = { }
+                )
+            }
         }
+
     }
 }
 
@@ -81,4 +93,3 @@ enum class AppDestinations(
 //    FAVORITES("Favorites", Icons.Default.Favorite),
 //    PROFILE("Profile", Icons.Default.AccountBox),
 }
-

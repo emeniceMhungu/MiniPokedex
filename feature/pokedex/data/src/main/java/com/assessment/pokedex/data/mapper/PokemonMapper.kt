@@ -1,15 +1,10 @@
 package com.assessment.pokedex.data.mapper
 
-import com.assessment.common.domain.model.BaseResult
-import com.assessment.common.domain.model.PokemonError
 import com.assessment.network.api.model.PokemonCharacterDto
-import com.assessment.network.model.ErrorResponse
 import com.assessment.pokedex.domain.model.ImageUrl
 import com.assessment.pokedex.domain.model.PokemonCharacter
 import com.assessment.pokedex.domain.model.PokemonId
 import com.assessment.pokedex.domain.model.PokemonName
-import com.slack.eithernet.ApiResult
-import timber.log.Timber
 
 fun PokemonCharacterDto.toDomain(): PokemonCharacter {
     val id = extractPokemonId(url)

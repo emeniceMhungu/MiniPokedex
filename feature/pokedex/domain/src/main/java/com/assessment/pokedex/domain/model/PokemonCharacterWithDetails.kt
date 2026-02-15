@@ -2,9 +2,9 @@ package com.assessment.pokedex.domain.model
 
 
 @JvmInline value class About(val value: String) {
-    init {
-        require(value.isNotBlank()) { "About cannot be blank" }
-    }
+//    init {
+//        require(value.isNotBlank()) { "About cannot be blank" }
+//    }
 }
 
 @JvmInline value class PokemonColor(val value: String){
@@ -40,19 +40,19 @@ package com.assessment.pokedex.domain.model
     }
 }
 @JvmInline value class BasicInfoValue(val value: String){
-    init {
-        require(value.isNotBlank()) { "Basic info value cannot be blank" }
-    }
+//    init {
+//        require(value.isNotBlank()) { "Basic info value cannot be blank" }
+//    }
 }
 
 data class PokemonCharacterWithDetails(
     val id: PokemonId,
     val name: PokemonName,
+    val imageUrl: ImageUrl,
     val about: About,
     val basicInfo: List<Pair<BasicInfoName, BasicInfoValue>>,
     val stats: List<Pair<PokemonStatName, PokemonStatValue>>, //name, value
     val abilities: List<Pair<PokemonAbility, Boolean>>, //name, hidden
-//    val moves: List<Pair<MoveName,LevelLearnedAt>>, //name, level_learned_at >>,
     val types: List<PokemonType>,
     val pokemonColor: PokemonColor
 )

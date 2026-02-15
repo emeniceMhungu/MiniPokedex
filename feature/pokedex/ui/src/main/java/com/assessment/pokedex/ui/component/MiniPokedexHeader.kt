@@ -11,12 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.assessment.designsystem.component.MiniPokedexAppBackground
+import com.assessment.designsystem.component.ThemePreviews
+import com.assessment.designsystem.theme.MiniPokedexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MiniPokedexHeader(
     modifier: Modifier = Modifier,
-    onNavigateUp: () -> Unit = {},
     title: String = "Mini Pokedex",
     navIcon: @Composable () -> Unit = {}
 ) {
@@ -31,4 +33,18 @@ fun MiniPokedexHeader(
         },
         navigationIcon = navIcon
     )
+}
+
+@ThemePreviews
+@Composable
+fun PreviewMiniPokedexHeader() {
+    MiniPokedexTheme {
+        MiniPokedexAppBackground(
+            modifier = Modifier
+                .height(180.dp)
+        ) {
+            MiniPokedexHeader()
+        }
+
+    }
 }
