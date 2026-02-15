@@ -10,8 +10,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
-import java.io.FileInputStream
-import java.util.Properties
 
 
 internal fun Project.configureKotlinAndroid(
@@ -122,8 +120,14 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
              */
             "-Xconsistent-data-class-copy-visibility",
             "-Xjsr305=strict",
-            "-Xopt-in=kotlin.ExperimentalStdlibApi"
+            "-opt-in=kotlin.ExperimentalStdlibApi",
+            /**
+             * Apply annotations to both value parameter and property.
+             * This is the recommended approach for Kotlin 2.x to ensure annotations like
+             * @IODispatcher, @MainDispatcher, etc., work correctly with dependency injection.
+             * https://kotlinlang.org/docs/annotations.html#annotation-use-site-targets
+             */
+            "-Xannotation-default-target=param-property"
         )
-
     }
 }

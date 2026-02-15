@@ -8,8 +8,12 @@ plugins {
 }
 
 android {
-    namespace = "com.assessment.common"
+    namespace = "com.assessment.pokedex.ui"
 }
+
 dependencies {
-    implementation(libs.accompanist.permissions)
+    implementation(project(":feature:pokedex:domain"))
+    implementation(project(":core:common"))
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }

@@ -19,4 +19,6 @@ android {
     }
 }
 dependencies {
+    implementation(project(":feature:pokedex:ui"))
+    implementation(project(":feature:pokedex:data"))
 }

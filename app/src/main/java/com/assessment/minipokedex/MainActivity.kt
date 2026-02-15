@@ -23,8 +23,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.assessment.minipokedex.ui.theme.MiniPokedexTheme
+import com.assessment.pokedex.ui.screen.PokemonListScreen
+import com.assessment.pokedex.ui.viewmodel.RetrievePokemonViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@PreviewScreenSizes
 @Composable
 fun MiniPokedexApp() {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }
@@ -60,9 +65,13 @@ fun MiniPokedexApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
+            val vieModel = hiltViewModel<RetrievePokemonViewModel>()
+
+            val state = vieModel.uiState.collectAsStateWithLifecycle()
+            PokemonListScreen(
+                modifier = Modifier.padding(innerPadding),
+                uiState = state.value,
+                onEvent = vieModel::onEvent
             )
         }
     }
@@ -73,8 +82,8 @@ enum class AppDestinations(
     val icon: ImageVector,
 ) {
     HOME("Home", Icons.Default.Home),
-    FAVORITES("Favorites", Icons.Default.Favorite),
-    PROFILE("Profile", Icons.Default.AccountBox),
+//    FAVORITES("Favorites", Icons.Default.Favorite),
+//    PROFILE("Profile", Icons.Default.AccountBox),
 }
 
 @Composable
