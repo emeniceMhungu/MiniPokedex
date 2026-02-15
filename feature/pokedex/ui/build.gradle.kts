@@ -12,6 +12,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:designsystem"))
     implementation(project(":feature:pokedex:domain"))
     implementation(project(":core:common"))
     implementation(libs.coil.compose)

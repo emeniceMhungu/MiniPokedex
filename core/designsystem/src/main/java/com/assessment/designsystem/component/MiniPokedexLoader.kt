@@ -1,4 +1,4 @@
-package com.assessment.pokedex.ui.component
+package com.assessment.designsystem.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.assessment.designsystem.theme.MiniPokedexTheme
 
 @Composable
 fun MiniPokedexLoader(
@@ -23,5 +24,15 @@ fun MiniPokedexLoader(
             color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.size(48.dp)
         )
+    }
+}
+
+@ThemePreviews
+@Composable
+fun WeatherLoaderPreview() {
+    MiniPokedexTheme {
+        MiniPokedexAppBackground {
+            MiniPokedexLoader()
+        }
     }
 }

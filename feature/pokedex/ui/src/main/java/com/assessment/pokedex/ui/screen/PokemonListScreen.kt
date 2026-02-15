@@ -29,7 +29,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.assessment.pokedex.ui.R
 import com.assessment.pokedex.ui.component.MiniPokedexHeader
-import com.assessment.pokedex.ui.component.MiniPokedexLoader
+import com.assessment.designsystem.component.MiniPokedexLoader
 import com.assessment.pokedex.ui.model.PokemonCharacterUiModel
 import com.assessment.pokedex.ui.model.PokemonListEvent
 import com.assessment.pokedex.ui.model.PokemonListUiState
