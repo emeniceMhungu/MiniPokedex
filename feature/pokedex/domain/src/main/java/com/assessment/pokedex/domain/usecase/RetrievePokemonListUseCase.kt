@@ -17,15 +17,9 @@ class RetrievePokemonListUseCase @Inject constructor(
         offset: Int
     ): Flow<PokemonListResult> = flow {
         emit(BaseResult.Loading())
-
-        val result = retrievePokemonRepository.getPokemonList(limit, offset)
-
-        emit(result)
+        emit(retrievePokemonRepository.getPokemonList(limit, offset))
+    }.catch { e ->
+        emit(BaseResult.Failure(PokemonError.GenericError(e.message ?: "Unknown failure")))
     }
-        .catch { e ->
-            emit(BaseResult.Failure(
-                PokemonError.GenericError(e.message ?: "Unknown failure"))
-            )
-        }
 }
 

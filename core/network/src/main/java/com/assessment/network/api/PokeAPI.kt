@@ -24,15 +24,14 @@ interface PokeAPI {
     ): ApiResult<PokemonListResponseDto, ErrorResponse>
 
     @DecodeErrorBody
-    @GET("$API_VERSION/pokemon/{name}")
+    @GET("$API_VERSION/pokemon/{id}")
     suspend fun getPokemonDetails(
-        @Path("name") pokemonName: String
+        @Path("id") pokemonId: Int
     ): ApiResult<PokemonDetailsResponseDto, ErrorResponse>
 
     @DecodeErrorBody
     @GET("$API_VERSION/pokemon-species/{id}")
     suspend fun getSpeciesDetails(
-        @Path("id") speciesId: String
+        @Path("id") speciesId: Int
     ): ApiResult<SpeciesDetailsResponseDto, ErrorResponse>
-
 }

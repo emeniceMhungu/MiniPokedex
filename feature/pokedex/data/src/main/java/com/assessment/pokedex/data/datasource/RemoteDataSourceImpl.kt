@@ -1,7 +1,9 @@
 package com.assessment.pokedex.data.datasource
 
 import com.assessment.network.api.PokeAPI
+import com.assessment.network.api.model.PokemonDetailsResponseDto
 import com.assessment.network.api.model.PokemonListResponseDto
+import com.assessment.network.api.model.SpeciesDetailsResponseDto
 import com.assessment.network.model.ErrorResponse
 import com.assessment.pokedex.data.contract.RemoteDataSource
 import com.slack.eithernet.ApiResult
@@ -15,5 +17,17 @@ internal class RemoteDataSourceImpl @Inject constructor(
         offset: Int
     ): ApiResult<PokemonListResponseDto, ErrorResponse> {
         return pokeAPI.getPokemonList(limit, offset)
+    }
+
+    override suspend fun getPokemonDetails(
+        id: Int
+    ): ApiResult<PokemonDetailsResponseDto, ErrorResponse> {
+        return pokeAPI.getPokemonDetails(pokemonId = id)
+    }
+
+    override suspend fun getPokemonSpecies(
+        id: Int
+    ): ApiResult<SpeciesDetailsResponseDto, ErrorResponse> {
+        return pokeAPI.getSpeciesDetails(speciesId = id)
     }
 }

@@ -6,8 +6,8 @@ import com.assessment.common.domain.model.BaseResult
 import com.assessment.common.domain.model.PokemonError
 import com.assessment.network.api.model.PokemonListResponseDto
 import com.assessment.network.model.ErrorResponse
+import com.assessment.network.util.toBaseResult
 import com.assessment.pokedex.data.contract.RemoteDataSource
-import com.assessment.pokedex.data.mapper.mapErrorToBaseResult
 import com.assessment.pokedex.data.mapper.toDomain
 import com.assessment.pokedex.domain.contract.RetrievePokemonRepository
 import com.assessment.pokedex.domain.model.PokemonCharacter
@@ -38,7 +38,7 @@ internal class RetrievePokemonRepositoryImpl @Inject constructor(
                 }
 
                 is ApiResult.Failure -> {
-                    result.mapErrorToBaseResult()
+                    result.toBaseResult<List<PokemonCharacter>>()
                 }
             }
         }

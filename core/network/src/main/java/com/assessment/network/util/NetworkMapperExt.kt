@@ -1,50 +1,39 @@
 package com.assessment.network.util
 
-import com.assessment.network.model.ErrorResponse
 import com.assessment.common.domain.model.BaseResult
+import com.assessment.common.domain.model.PokemonError
+import com.assessment.network.model.ErrorResponse
 import com.slack.eithernet.ApiResult
 import timber.log.Timber
 
-fun ApiResult.Failure<ErrorResponse>.toBaseResult(): BaseResult<Unit, ErrorResponse> {
-    when (this) {
+fun <T : Any> ApiResult.Failure<ErrorResponse>.toBaseResult(): BaseResult<T, PokemonError> {
+    return when (this) {
         is ApiResult.Failure.ApiFailure -> {
-            Timber.d("ApiFailure: ${this.error?.message}")
-            return BaseResult.Failure(
-                this.error ?: ErrorResponse(
-                    0,
-                    "Unknown error"
-                )
-            )
+            val errorMessage = this.error?.message ?: "An API error occurred"
+            Timber.d("ApiFailure: $errorMessage")
+            BaseResult.Failure(PokemonError.GenericError(errorMessage))
         }
 
         is ApiResult.Failure.HttpFailure -> {
-            Timber.d("HttpFailure: ${this.error?.message}")
-            return BaseResult.Failure(
-                ErrorResponse(
-                    this.code,
-                    this.error?.message
-                )
-            )
+            val errorMessage = this.error?.message ?: "An HTTP error occurred"
+            Timber.d("HttpFailure: code=${this.code}, message=$errorMessage")
+            when (this.code) {
+                400 -> BaseResult.Failure(PokemonError.BadRequestError(errorMessage))
+                401 -> BaseResult.Failure(PokemonError.UnauthorizedError(errorMessage))
+                else -> BaseResult.Failure(PokemonError.GenericError(errorMessage))
+            }
         }
 
         is ApiResult.Failure.NetworkFailure -> {
-            Timber.d("NetworkFailure: ${this.error.message}")
-            return BaseResult.Failure(
-                ErrorResponse(
-                    0,
-                    "Network error"
-                )
-            )
+            val errorMessage = this.error.message ?: "A network error occurred"
+            Timber.d("NetworkFailure: $errorMessage")
+            BaseResult.Failure(PokemonError.NetworkError(errorMessage))
         }
 
         is ApiResult.Failure.UnknownFailure -> {
-            Timber.d("UnknownFailure: ${this.error.message}")
-            return BaseResult.Failure(
-                ErrorResponse(
-                    0,
-                    "Unknown failure"
-                )
-            )
+            val errorMessage = this.error.message ?: "An unknown error occurred"
+            Timber.d("UnknownFailure: $errorMessage")
+            BaseResult.Failure(PokemonError.GenericError(errorMessage))
         }
     }
 }
