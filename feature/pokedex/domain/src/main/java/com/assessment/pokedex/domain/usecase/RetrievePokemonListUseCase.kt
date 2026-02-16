@@ -12,7 +12,7 @@ import javax.inject.Inject
 class RetrievePokemonListUseCase @Inject constructor(
     private val retrievePokemonRepository: RetrievePokemonRepository,
 ) {
-    suspend operator fun invoke(
+    operator fun invoke(
         limit: Int,
         offset: Int
     ): Flow<PokemonListResult> = flow {

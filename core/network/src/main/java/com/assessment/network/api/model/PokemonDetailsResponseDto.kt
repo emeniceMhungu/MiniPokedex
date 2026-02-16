@@ -127,21 +127,21 @@ data class Species(
 @JsonClass(generateAdapter = true)
 data class Sprites(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
-    val backShinyFemale: String = "",
+    val backShinyFemale: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = "",
+    val frontShinyFemale: String? = null,
     @param:Json(name = "other")
     val other: Other = Other(),
     @param:Json(name = "versions")
@@ -297,7 +297,7 @@ data class Versions(
 @JsonClass(generateAdapter = true)
 data class DreamWorld(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
     val frontFemale: Any? = null
 )
@@ -305,41 +305,41 @@ data class DreamWorld(
 @JsonClass(generateAdapter = true)
 data class Home(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class OfficialArtwork(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = ""
+    val frontShiny: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Showdown(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
     val backShinyFemale: Any? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
@@ -419,173 +419,173 @@ data class GenerationViii(
 @JsonClass(generateAdapter = true)
 data class RedBlue(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_gray")
-    val backGray: String = "",
+    val backGray: String? = null,
     @param:Json(name = "back_transparent")
-    val backTransparent: String = "",
+    val backTransparent: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_gray")
-    val frontGray: String = "",
+    val frontGray: String? = null,
     @param:Json(name = "front_transparent")
-    val frontTransparent: String = ""
+    val frontTransparent: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Yellow(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
-    @param:Json(name = "back_gray")
-    val backGray: String = "",
+    val backDefault: String? = null,
+    @param:Json(name = "yellow_back_gray") // placeholder name - actual JSON key is "yellow" object handled by adapter
+    val backGray: String? = null,
     @param:Json(name = "back_transparent")
-    val backTransparent: String = "",
+    val backTransparent: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_gray")
-    val frontGray: String = "",
+    val frontGray: String? = null,
     @param:Json(name = "front_transparent")
-    val frontTransparent: String = ""
+    val frontTransparent: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Crystal(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_transparent")
-    val backShinyTransparent: String = "",
+    val backShinyTransparent: String? = null,
     @param:Json(name = "back_transparent")
-    val backTransparent: String = "",
+    val backTransparent: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_transparent")
-    val frontShinyTransparent: String = "",
+    val frontShinyTransparent: String? = null,
     @param:Json(name = "front_transparent")
-    val frontTransparent: String = ""
+    val frontTransparent: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Gold(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_transparent")
-    val frontTransparent: String = ""
+    val frontTransparent: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Silver(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_transparent")
-    val frontTransparent: String = ""
+    val frontTransparent: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Emerald(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = ""
+    val frontShiny: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class FireredLeafgreen(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = ""
+    val frontShiny: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class RubySapphire(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = ""
+    val frontShiny: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class DiamondPearl(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
-    val backShinyFemale: String = "",
+    val backShinyFemale: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class HeartgoldSoulsilver(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
-    val backShinyFemale: String = "",
+    val backShinyFemale: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Platinum(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
-    val backShinyFemale: String = "",
+    val backShinyFemale: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
@@ -601,71 +601,71 @@ data class BlackWhite(
     @param:Json(name = "animated")
     val animated: Animated = Animated(),
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
-    val backShinyFemale: String = "",
+    val backShinyFemale: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Animated(
     @param:Json(name = "back_default")
-    val backDefault: String = "",
+    val backDefault: String? = null,
     @param:Json(name = "back_female")
-    val backFemale: String = "",
+    val backFemale: String? = null,
     @param:Json(name = "back_shiny")
-    val backShiny: String = "",
+    val backShiny: String? = null,
     @param:Json(name = "back_shiny_female")
-    val backShinyFemale: String = "",
+    val backShinyFemale: String? = null,
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class OmegarubyAlphasapphire(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class XY(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class Icons(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
     val frontFemale: Any? = null
 )
@@ -673,19 +673,19 @@ data class Icons(
 @JsonClass(generateAdapter = true)
 data class UltraSunUltraMoon(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
-    val frontFemale: String = "",
+    val frontFemale: String? = null,
     @param:Json(name = "front_shiny")
-    val frontShiny: String = "",
+    val frontShiny: String? = null,
     @param:Json(name = "front_shiny_female")
-    val frontShinyFemale: String = ""
+    val frontShinyFemale: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class BrilliantDiamondShiningPearl(
     @param:Json(name = "front_default")
-    val frontDefault: String = "",
+    val frontDefault: String? = null,
     @param:Json(name = "front_female")
     val frontFemale: Any? = null
 )
