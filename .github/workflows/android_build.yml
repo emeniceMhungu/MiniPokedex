@@ -44,8 +44,6 @@ jobs:
       - name: Add Coverage Comment to PR
         uses: madrapps/jacoco-report@v1.6.1
         with:
-          # Using a wildcard to find all individual xml reports
-          # The action will check each one against the threshold
           paths: '**/build/reports/jacoco/createDebugCoverageReport/createDebugCoverageReport.xml'
           # The minimum coverage percentage required for the entire project
           min-coverage-overall: 20

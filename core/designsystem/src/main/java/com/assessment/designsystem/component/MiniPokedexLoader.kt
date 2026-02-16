@@ -29,7 +29,7 @@ fun MiniPokedexLoader(
 
 @ThemePreviews
 @Composable
-fun WeatherLoaderPreview() {
+fun MiniPokedexLoaderPreview() {
     MiniPokedexTheme {
         MiniPokedexAppBackground {
             MiniPokedexLoader()
