@@ -19,4 +19,7 @@ android {
     }
 }
 dependencies {
+    implementation(project(":core:designsystem"))
+    implementation(project(":feature:pokedex:ui"))
+    implementation(project(":feature:pokedex:data"))
 }

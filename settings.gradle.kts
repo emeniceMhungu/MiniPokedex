@@ -24,3 +24,7 @@ rootProject.name = "MiniPokedex"
 include(":app")
 include(":core:network")
 include(":core:common")
+include(":feature:pokedex:data")
+include(":feature:pokedex:domain")
+include(":feature:pokedex:ui")
+include(":core:designsystem")

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_network">No internet connection. Please check your network.</string>
+    <string name="error_unauthorized">Unauthorized error, check credentials and relogin.</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_bad_request">Malformed request, contact support if it persist.</string>
+    <string name="no_pokemon_found">No Pokemon Found</string>
+    <string name="search_pokemon_hint">Search a pokemon</string>
+    <string name="pokemon_image_content_description">Pokemon image content description</string>
+    <string name="home_title">Pokemon</string>
+</resources>
