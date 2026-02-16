@@ -1,4 +1,5 @@
 package com.assessment.network.api.model
+
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Json
 

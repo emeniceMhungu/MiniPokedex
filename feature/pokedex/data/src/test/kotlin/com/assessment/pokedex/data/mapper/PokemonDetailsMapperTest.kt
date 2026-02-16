@@ -21,41 +21,6 @@ class PokemonDetailsMapperTest {
 
     @Test
     fun `toDomain maps stats and flavor text correctly`() {
-        val pokemonJson = """
-        {
-          "id": 1,
-          "name": "bulbasaur",
-          "height": 7,
-          "weight": 69,
-          "base_experience": 64,
-          "stats": [
-            {"base_stat": 45, "effort": 0, "stat": {"name": "hp", "url": ""}},
-            {"base_stat": 49, "effort": 0, "stat": {"name": "attack", "url": ""}}
-          ],
-          "abilities": [{"ability": {"name": "overgrow", "url": ""}, "is_hidden": false, "slot": 1}],
-          "types": [{"slot": 1, "type": {"name": "grass", "url": ""}}]
-        }
-        """.trimIndent()
-
-        val speciesJson = """
-        {
-          "capture_rate": 45,
-          "base_happiness": 70,
-          "flavor_text_entries": [
-            {"flavor_text": "A strange seed was planted...\nIt grows with the sun.", "language": {"name": "en", "url": ""}, "version": {"name": "", "url": ""}}
-          ],
-          "growth_rate": {"name": "medium", "url": ""},
-          "hatch_counter": 20,
-          "habitat": {"name": "grassland", "url": ""},
-          "is_baby": false,
-          "is_legendary": false,
-          "is_mythical": false,
-          "shape": {"name": "quadruped", "url": ""},
-          "color": {"name": "green", "url": ""}
-        }
-        """.trimIndent()
-
-        // Construct DTOs directly to avoid Moshi reflection/codegen issues in unit tests
         val pokemonDto = PokemonDetailsResponseDto(
             id = 1,
             name = "bulbasaur",
