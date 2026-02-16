@@ -2,8 +2,6 @@ package com.assessment.pokedex.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -13,14 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.assessment.pokedex.ui.model.BasicInfoNameUiModel
-import com.assessment.pokedex.ui.model.BasicInfoValueUiModel
+import com.assessment.pokedex.ui.model.PokemonStatNameUiModel
+import com.assessment.pokedex.ui.model.PokemonStatValueUiModel
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun BasicInfoCard(
+fun StatsCard(
     modifier: Modifier = Modifier,
-    basicInfo: List<Pair<BasicInfoNameUiModel, BasicInfoValueUiModel>>
+    stats: List<Pair<PokemonStatNameUiModel, PokemonStatValueUiModel>>
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
@@ -28,22 +25,13 @@ fun BasicInfoCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Basic Info",
+                text = "Base Stats",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
-            FlowRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                maxItemsInEachRow = 2
-            ) {
-                basicInfo.forEach { (name, value) ->
-                    InfoItemCard(
-                        name = name.value,
-                        value = value.value,
-                        modifier = Modifier.weight(1f)
-                    )
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                stats.forEach { (name, value) ->
+                    StatRow(name = name.value, value = value.value)
                 }
             }
         }

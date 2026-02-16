@@ -28,13 +28,18 @@ class RetrievePokemonViewModel @Inject constructor(
         MutableStateFlow<PokemonListUiState>(PokemonListUiState.Empty)
     val uiState: StateFlow<PokemonListUiState> = _uiState.asStateFlow()
 
-    init {
-        retrievePokemonList()
-    }
 
-    fun onEvent(event: PokemonListEvent){
-        when(event){
+    fun onEvent(event: PokemonListEvent) {
+        when (event) {
             is PokemonListEvent.LoadPokemonList -> {
+                retrievePokemonList()
+            }
+
+            is PokemonListEvent.OnPokemonClicked -> {
+                //do nothing already handled in navigation
+            }
+
+            PokemonListEvent.Retry -> {
                 retrievePokemonList()
             }
         }

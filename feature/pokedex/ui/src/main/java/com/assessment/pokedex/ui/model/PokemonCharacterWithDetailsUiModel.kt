@@ -1,7 +1,6 @@
 package com.assessment.pokedex.ui.model
 
 import androidx.compose.ui.graphics.Color
-import com.assessment.pokedex.domain.model.PokemonAbility
 
 @JvmInline value class AboutUiModel(val value: String)
 @JvmInline value class BasicInfoNameUiModel(val value: String)
@@ -21,10 +20,10 @@ import com.assessment.pokedex.domain.model.PokemonAbility
 
 
 data class PokemonCharacterWithDetailsUiModel(
-    val id: PokemonId,
-    val name: PokemonName,
-    val displayName: DisplayName,
-    val imageUrl: ImageUrl,
+    val id: UiPokemonId,
+    val name: UiPokemonName,
+    val uiDisplayName: UiDisplayName,
+    val uiImageUrl: UiImageUrl,
     val formattedId: FormattedId,
     val about: AboutUiModel,
     val basicInfo: List<Pair<BasicInfoNameUiModel, BasicInfoValueUiModel>>,

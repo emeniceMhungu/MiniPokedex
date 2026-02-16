@@ -4,23 +4,22 @@ package com.assessment.pokedex.ui.model
  * Value classes for type-safe Pokemon UI properties.
  * These provide compile-time type safety with zero runtime overhead.
  */
-
 @JvmInline
-value class PokemonId(val value: Int) {
+value class UiPokemonId(val value: Int){
     init {
         require(value > 0) { "Pokemon ID must be positive, got: $value" }
     }
 }
 
 @JvmInline
-value class PokemonName(val value: String) {
+value class UiPokemonName(val value: String) {
     init {
         require(value.isNotBlank()) { "Pokemon name cannot be blank" }
     }
 }
 
 @JvmInline
-value class DisplayName(val value: String) {
+value class UiDisplayName(val value: String) {
     init {
         require(value.isNotBlank()) { "Display name cannot be blank" }
         require(value.first().isUpperCase()) { "Display name must be capitalized" }
@@ -28,7 +27,7 @@ value class DisplayName(val value: String) {
 }
 
 @JvmInline
-value class ImageUrl(val value: String) {
+value class UiImageUrl(val value: String) {
     init {
         require(value.startsWith("http")) { "Image URL must be valid HTTP(S) URL, got: $value" }
     }
@@ -46,10 +45,10 @@ value class FormattedId(val value: String) {
  * Uses value classes for type safety and validation.
  */
 data class PokemonCharacterUiModel(
-    val id: PokemonId,
-    val name: PokemonName,
-    val displayName: DisplayName,
-    val imageUrl: ImageUrl,
+    val id: UiPokemonId,
+    val name: UiPokemonName,
+    val uiDisplayName: UiDisplayName,
+    val uiImageUrl: UiImageUrl,
     val formattedId: FormattedId
 )
 

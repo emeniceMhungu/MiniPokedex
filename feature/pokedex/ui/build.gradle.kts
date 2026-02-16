@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.minipokedex.android.library.jacoco)
     alias(libs.plugins.minipokedex.android.library.test)
     alias(libs.plugins.minipokedex.android.lint)
+    alias(libs.plugins.kotlin.serialization) //fixme: move to conventions
 }
 
 android {

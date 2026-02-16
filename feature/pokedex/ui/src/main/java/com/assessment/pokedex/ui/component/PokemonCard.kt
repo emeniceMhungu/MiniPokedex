@@ -25,22 +25,22 @@ import com.assessment.designsystem.component.MiniPokedexLoader
 import com.assessment.designsystem.component.ThemePreviews
 import com.assessment.designsystem.theme.MiniPokedexTheme
 import com.assessment.pokedex.ui.R
-import com.assessment.pokedex.ui.model.DisplayName
+import com.assessment.pokedex.ui.model.UiDisplayName
 import com.assessment.pokedex.ui.model.FormattedId
-import com.assessment.pokedex.ui.model.ImageUrl
+import com.assessment.pokedex.ui.model.UiImageUrl
 import com.assessment.pokedex.ui.model.PokemonCharacterUiModel
-import com.assessment.pokedex.ui.model.PokemonId
-import com.assessment.pokedex.ui.model.PokemonName
+import com.assessment.pokedex.ui.model.UiPokemonId
+import com.assessment.pokedex.ui.model.UiPokemonName
 
 @Composable
 fun PokemonCard(
     modifier: Modifier = Modifier,
     pokemon: PokemonCharacterUiModel,
-    onItemClicked: (Int) -> Unit
+    onItemClicked: (UiPokemonId) -> Unit
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        onClick = { onItemClicked(pokemon.id.value) },
+        onClick = { onItemClicked(pokemon.id) },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(
@@ -52,7 +52,7 @@ fun PokemonCard(
         ) {
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(pokemon.imageUrl.value)
+                    .data(pokemon.uiImageUrl.value)
                     .crossfade(true)
                     .build(),
                 loading = { MiniPokedexLoader() },
@@ -62,7 +62,7 @@ fun PokemonCard(
                     .padding(bottom = 8.dp)
             )
             Text(
-                text = pokemon.displayName.value,
+                text = pokemon.uiDisplayName.value,
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center
             )
@@ -77,10 +77,10 @@ fun PokemonCardDefaultPreview() {
         MiniPokedexAppBackground(modifier = Modifier.height(200.dp)) {
             PokemonCard(
                 pokemon = PokemonCharacterUiModel(
-                    id = PokemonId(1),
-                    name = PokemonName("bulbasaur"),
-                    displayName = DisplayName("Bulbasaur"),
-                    imageUrl = ImageUrl("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
+                    id = UiPokemonId(1),
+                    name = UiPokemonName("bulbasaur"),
+                    uiDisplayName = UiDisplayName("Bulbasaur"),
+                    uiImageUrl = UiImageUrl("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
                     formattedId = FormattedId("#001")
                 ),
                 onItemClicked = {}

@@ -8,6 +8,7 @@ import com.assessment.pokedex.ui.mapper.toMessageResId
 import com.assessment.pokedex.ui.mapper.toUiModel
 import com.assessment.pokedex.ui.model.PokemonDetailsEvent
 import com.assessment.pokedex.ui.model.PokemonDetailsUiState
+import com.assessment.pokedex.ui.model.UiPokemonId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,9 +33,9 @@ class GetPokemonDetailsViewModel @Inject constructor(
         }
     }
 
-    private fun getPokemonDetails(id: Int) {
+    private fun getPokemonDetails(id: UiPokemonId) {
         viewModelScope.launch {
-            getPokemonDetailsUseCase(id).collect { result ->
+            getPokemonDetailsUseCase(id.value).collect { result ->
                 when (result) {
                     is BaseResult.Failure -> {
                         Timber.d("Error: ${result.error}")
