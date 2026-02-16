@@ -10,3 +10,24 @@ plugins {
     alias(libs.plugins.jacoco.report.aggregation)
 
 }
+
+dependencies {
+    jacocoAggregation(project(":feature:pokedex:data"))
+//    jacocoAggregation(project(":feature:pokedex:domain"))
+    jacocoAggregation(project(":feature:pokedex:ui"))
+    jacocoAggregation(project(":core:common"))
+//    jacocoAggregation(project(":core:network"))
+    jacocoAggregation(project(":lint"))
+
+}
+
+tasks.register("jacocoAggregationCoverageReport"){
+    val jacocoAggregatedProjects = configurations.getByName("jacocoAggregation").allDependencies.map {
+        (it as org.gradle.api.artifacts.ProjectDependency).dependencyProject
+    }
+
+    val coverageTasks = jacocoAggregatedProjects.flatMap { project ->
+        project.tasks.matching { it.name.matches(Regex("create.*.CoverageReport")) }
+    }
+    dependsOn(coverageTasks)
+}

@@ -72,10 +72,10 @@ class RetrievePokemonRepositoryImplTest {
         assertEquals(3, successResult.data.size)
 
         // Verify first pokemon mapping
-        assertEquals(1, successResult.data[0].id)
-        assertEquals("bulbasaur", successResult.data[0].name)
+        assertEquals(1, successResult.data[0].id.value)
+        assertEquals("bulbasaur", successResult.data[0].name.value)
         assertEquals("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-            successResult.data[0].imageUrl)
+            successResult.data[0].imageUrl.value)
 
         // Verify second pokemon mapping
         assertEquals(2, successResult.data[1].id.value)
@@ -146,7 +146,7 @@ class RetrievePokemonRepositoryImplTest {
         assertTrue(result is BaseResult.Failure)
         val failureResult = result as BaseResult.Failure
         assertTrue(failureResult.error is PokemonError.GenericError)
-        assertEquals("Unknown API error", (failureResult.error as PokemonError.GenericError).errorMessage)
+        assertEquals("An API error occurred", (failureResult.error as PokemonError.GenericError).errorMessage)
     }
 
     @Test
@@ -231,7 +231,7 @@ class RetrievePokemonRepositoryImplTest {
         assertTrue(result is BaseResult.Failure)
         val failureResult = result as BaseResult.Failure
         assertTrue(failureResult.error is PokemonError.GenericError)
-        assertEquals("HTTP error: 404", (failureResult.error as PokemonError.GenericError).errorMessage)
+        assertEquals("An HTTP error occurred", (failureResult.error as PokemonError.GenericError).errorMessage)
     }
 
     @Test

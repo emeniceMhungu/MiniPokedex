@@ -46,7 +46,7 @@ fun PermissionBox(
     modifier: Modifier = Modifier,
     permission: String,
     description: String? = null,
-    contentAlignment: Alignment = Alignment.Companion.TopStart,
+    contentAlignment: Alignment = Alignment.TopStart,
     onGranted: @Composable BoxScope.() -> Unit,
 ) {
     PermissionBox(
@@ -71,7 +71,7 @@ fun PermissionBox(
     permissions: List<String>,
     requiredPermissions: List<String> = permissions,
     description: String? = null,
-    contentAlignment: Alignment = Alignment.Companion.TopStart,
+    contentAlignment: Alignment = Alignment.TopStart,
     onGranted: @Composable BoxScope.(List<String>) -> Unit,
 ) {
     val context = LocalContext.current
@@ -97,7 +97,7 @@ fun PermissionBox(
         contentAlignment = if (allRequiredPermissionsGranted) {
             contentAlignment
         } else {
-            Alignment.Companion.Center
+            Alignment.Center
         },
     ) {
         if (allRequiredPermissionsGranted) {
@@ -114,8 +114,8 @@ fun PermissionBox(
             )
 
             FloatingActionButton(
-                modifier = Modifier.Companion
-                    .align(Alignment.Companion.BottomEnd)
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
                     .padding(16.dp),
                 onClick = {
                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
@@ -148,7 +148,7 @@ private fun PermissionScreen(
         }
     }
     Column(
-        modifier = Modifier.Companion
+        modifier = Modifier
             .fillMaxWidth()
             .animateContentSize(),
         verticalArrangement = Arrangement.Center,
@@ -157,18 +157,18 @@ private fun PermissionScreen(
         Text(
             text = "MiniPokedexApp requires permission/s:",
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.Companion.padding(16.dp),
+            modifier = Modifier.padding(16.dp),
         )
         Text(
             text = permissions,
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.Companion.padding(16.dp),
+            modifier = Modifier.padding(16.dp),
         )
         if (description != null) {
             Text(
                 text = description,
                 style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.Companion.padding(16.dp),
+                modifier = Modifier.padding(16.dp),
             )
         }
         Button(
@@ -186,7 +186,7 @@ private fun PermissionScreen(
             Text(
                 text = errorText,
                 style = MaterialTheme.typography.labelSmall,
-                modifier = Modifier.Companion.padding(16.dp),
+                modifier = Modifier.padding(16.dp),
             )
         }
     }

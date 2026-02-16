@@ -38,6 +38,7 @@ The project follows a multi-module Clean Architecture pattern to promote separat
         - `:domain`: Contains use cases, domain models, and repository contracts.
         - `:ui`: The presentation layer with Composables, ViewModels, and UI state models.
 - `build-logic`: Manages Gradle build configurations and dependencies using convention plugins for consistency across modules.
+- `lint`: Contains custom lint checks to enforce project-specific coding standards.
 
 ### Tech Stack
 
@@ -48,6 +49,27 @@ The project follows a multi-module Clean Architecture pattern to promote separat
 - **Asynchronous Programming**: Kotlin [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) and [Flow](https://kotlinlang.org/docs/flow.html) for managing background tasks and data streams.
 - **Navigation**: [Navigation Compose](https://developer.android.com/jetpack/compose/navigation) for type-safe navigation between screens.
 - **Image Loading**: [Coil](https://coil-kt.github.io/coil/) for efficient image loading.
+
+## 🤖 Code Quality & Continuous Integration
+
+This project uses GitHub Actions for continuous integration. The workflow, defined in `.github/workflows/android_build.yml`, is triggered on every push and pull request to the `main` branch. It automates several quality checks and build processes.
+
+### CI Workflow Steps:
+
+1.  **Run Tests & Lint**: Executes `./gradlew testDebugUnitTest` and `./gradlew lintDebug` to ensure code correctness and adherence to style guides.
+2.  **Generate Code Coverage**: Runs `./gradlew jacocoAggregationCoverageReport` to measure test coverage across all modules.
+3.  **Build APK**: Assembles a debug version of the application using `./gradlew assembleDebug`.
+
+### CI Artifacts & Reports:
+
+At the end of each run, the workflow publishes the following artifacts, which can be downloaded from the workflow summary page:
+-   **Debug APK**: The installable `app-debug.apk`.
+-   **Lint Reports**: An HTML report from the lint analysis (`lint-report`).
+-   **Individual Coverage Reports**: A detailed JaCoCo HTML report for each module (`individual-coverage-reports`).
+
+### Pull Request Integration:
+
+For pull requests, the CI goes a step further by posting a comment directly on the PR. This comment contains a summary of the code coverage for each module, making it easy to review the impact of changes. The workflow will fail if any module's test coverage drops below a predefined threshold, enforcing a minimum standard of testing.
 
 ## 🚀 Getting Started
 

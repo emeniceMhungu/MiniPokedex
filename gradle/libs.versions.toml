@@ -121,6 +121,7 @@ testing-mock-webserver = { module = "com.squareup.okhttp3:mockwebserver", versio
 testing-mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 testing-mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoAndroid" }
 androidx-arch-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "androidx-arch-core-testing" }
+junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 
 #logging
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
