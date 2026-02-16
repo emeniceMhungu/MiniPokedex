@@ -1,5 +1,3 @@
-
-
 package com.assessment.lint
 
 import com.android.tools.lint.client.api.IssueRegistry
@@ -14,6 +12,7 @@ class MiniPodexAppIssueRegistry : IssueRegistry() {
         DesignSystemDetector.ISSUE,
         TestMethodNameDetector.FORMAT,
         TestMethodNameDetector.PREFIX,
+        MoshiJsonUseSiteDetector.ISSUE,
     )
 
     override val api: Int = CURRENT_API
