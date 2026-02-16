@@ -1,10 +1,10 @@
-package com.dvtsoftware.common.mapper
+package com.assessment.common.mapper
 
 import com.assessment.common.domain.mapper.toInstant
 import com.assessment.common.domain.mapper.toLocalDate
 import com.assessment.common.domain.mapper.toLocalDateTime
 import com.assessment.common.domain.mapper.toReadableString
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Test
 import java.time.Instant
 import java.time.LocalDate
@@ -24,7 +24,7 @@ class MappersUtilExtensionsTest {
         val actualDate = epochDay.toLocalDate()
 
         // Assert
-        assertEquals(expectedDate, actualDate)
+        Assert.assertEquals(expectedDate, actualDate)
     }
 
     @Test
@@ -40,7 +40,7 @@ class MappersUtilExtensionsTest {
         val actualString = instant.toReadableString()
 
         // Assert
-        assertEquals(expectedString, actualString)
+        Assert.assertEquals(expectedString, actualString)
     }
 
     @Test
@@ -53,7 +53,7 @@ class MappersUtilExtensionsTest {
         val actualLocalDateTime = instant.toLocalDateTime()
 
         // Assert
-        assertEquals(expectedLocalDateTime, actualLocalDateTime)
+        Assert.assertEquals(expectedLocalDateTime, actualLocalDateTime)
     }
 
     @Test
@@ -66,7 +66,7 @@ class MappersUtilExtensionsTest {
         val actualDate = instant.toLocalDate()
 
         // Assert
-        assertEquals(expectedDate, actualDate)
+        Assert.assertEquals(expectedDate, actualDate)
     }
 
     @Test
@@ -79,6 +79,6 @@ class MappersUtilExtensionsTest {
         val actualInstant = epochSecond.toInstant()
 
         // Assert
-        assertEquals(expectedInstant, actualInstant)
+        Assert.assertEquals(expectedInstant, actualInstant)
     }
 }

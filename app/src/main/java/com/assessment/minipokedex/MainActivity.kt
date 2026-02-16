@@ -18,7 +18,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MiniPokedexTheme {
-                MiniPokedexApp()
+                MiniPokedexAppBackground {
+                    MiniPokedexApp()
+                }
             }
         }
     }
@@ -26,13 +28,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MiniPokedexApp() {
-    MiniPokedexTheme {
-        MiniPokedexAppBackground {
-            MiniPokedexAppBackground {
-                val navController = rememberNavController()
-                AppNavGraph(navController)
-            }
-        }
-    }
+    val navController = rememberNavController()
+    AppNavGraph(navController)
 }
+
 

@@ -5,15 +5,15 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ErrorResponse(
-    @field:Json(name = "cod")
+    @param:Json(name = "cod")
     val code: Int? = null,
 
-    @field:Json(name = "message")
+    @param:Json(name = "message")
     val message: String? = null,
 
-    @field:Json(name = "status")
+    @param:Json(name = "status")
     val status: String? = null,
 
-    @field:Json(name = "error")
+    @param:Json(name = "error")
     val error: String? = null
 )
