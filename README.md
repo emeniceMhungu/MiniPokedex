@@ -77,7 +77,7 @@ To get the project up and running, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/MiniPokedex.git
+    git clone https://github.com/emeniceMhungu/MiniPokedex.git
     ```
 2.  **Open in Android Studio:**
     Open the cloned directory in the latest stable version of Android Studio.

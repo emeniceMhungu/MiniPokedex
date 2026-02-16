@@ -14,7 +14,7 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.junit)
+    implementation(libs.testing.junit)
     compileOnly(libs.kotlin.stdlib)
     compileOnly(libs.lint.api)
     testImplementation(libs.kotlin.test)
