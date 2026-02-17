@@ -84,7 +84,9 @@ fun PokemonCharacterDetailsScreen(
             is PokemonDetailsUiState.Error -> {
                 MiniPokedexAppError(
                     messageResId = uiState.messageResId,
-                    onRetry = {}
+                    onRetry = {
+                        onNavigateUp()
+                    }
                 )
             }
         }
